@@ -1,0 +1,51 @@
+Sem,Part,Subject Code,Subject Name,Credits,Grade,Marks
+1,1,C1TL11,Pothu Tamil Paper - I,4,B+,65
+1,2,C2EN11,Communicative English - I,4,A,75
+1,3,CMCS11,Programming in C,4,A+,85
+1,3,CMCSP1,Practical - Programming in C,2,O,95
+1,3,CPPS11,Professional English for Physical Sciences - I,4,O,95
+1,3,CACS11,Discrete Mathematics,4,B+,65
+1,4,CEVS11,Environmental Studies,2,B+,65
+2,1,C1TL21,Pothu Tamil Paper - II,4,C,45
+2,2,C2EN21,Communicative English - II,4,C,45
+2,3,CMCS21,Programming in C++,4,C,45
+2,3,CMCSP2,Practical II - Programming in C++,2,B+,65
+2,3,CPPS21,Professional English for Physical Sciences - II,4,B+,65
+2,3,CACSP1,Practical - Linux,2,O,95
+2,2,CVBE21,Value Based Education,2,B,55
+3,1,C1TL31,Pothu Tamil Paper - III,4,C,45
+3,2,C2EN31,General English - I,4,B,55
+3,3,CMCS31,Java Programming,4,B,55
+3,3,CMCSP3,Java Programming Lab,2,O,95
+3,3,CACS31,Scripting Languages,3,B+,65
+3,3,CACSP3,Scripting Languages Lab,2,O,95
+3,3,CSCS31,Digital Design,4,B,55
+3,4,CNCO31,Introduction to Accountancy,2,B,55
+3,4,CYOG31,Yoga,2,A,75
+4,1,C1TL41,Pothu Tamil Paper - IV,4,C,45
+4,2,C2EN41,General English - II,4,B,55
+4,3,CMCS41,Data Structures,4,C,45
+4,3,CMCSP4,Data Structures Lab,2,C,45
+4,3,CACS41,Machine Learning Techniques,3,C,45
+4,3,CACSP4,Practical - PYTHON,2,A+,85
+4,3,CSCS41,Computer Architecture,4,C,45
+4,4,CNCO41,Financial Accounting,2,B,55
+4,4,NMDE41,Naan Mudhalvan - Digital Skills for Employability,2,A+,85
+4,5,C5EA41,Extension Activity,1,A+,85
+5,3,CMCS51,Relational Database Management Systems,4,C,45
+5,3,CMCS52,Data Communication and Computer Networks,4,B+,65
+5,3,CMCS53,PHP and mySQL,4,A,75
+5,3,CMCSP5,Practical - PHP,2,O,95
+5,3,CMCSP6,Machine Learning Lab,2,O,95
+5,3,CMCSP7,Green Foot Lab,2,O,95
+5,4,CECS53,Cloud Computing,4,B,55
+5,4,CCBS51,Personality Development,2,B,55
+5,4,NMCE51,Naan Mudhalvan - Cloud and IT Essentials for Employability,2,O,95
+6,3,CMCS61,Operating System,4,B+,65
+6,3,CMCS62,Software Engineering and Testing,4,A,75
+6,3,CMCS63,Computer Graphics and Visualization,4,C,45
+6,3,CMCSP8,Project - Digital Image Processing Using SciLab,2,O,95
+6,3,CMCSP9,Computer Graphics Lab,2,O,95
+6,3,CMCSP10,MySQL Lab,2,O,95
+6,3,CECS62,Introduction to Digital Image Processing,4,B+,65
+6,4,NMET62,Naan Mudhalvan - Emerging Technology for Employability,2,O,95
