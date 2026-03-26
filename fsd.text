@@ -159,7 +159,7 @@ async function run() {
  age: 22,
 place: "Chennai"
  });
- console.log("Inserted document ID:",Â  insertResult.insertedId);
+ console.log("Inserted document ID:",  insertResult.insertedId);
 
  // 2. Find documents
  const students = await     collection.find({}).toArray();
