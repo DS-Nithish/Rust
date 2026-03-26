@@ -146,47 +146,46 @@ const dbName = 'test';
 const collectionName = 'msc';
 
 async function run() {
-Â Â Â Â try {
-Â Â Â Â Â Â Â Â await client.connect();
-Â Â Â Â Â Â Â Â console.log("Connected to MongoDB");
-Â Â Â Â Â Â Â Â const db = client.db(dbName);
-Â Â Â Â Â Â Â Â const collection = db.collection(collectionName);
+ try {
+      await client.connect();
+      console.log("Connected to MongoDB");
+      const db = client.db(dbName);
+      const collection = db.collection(collectionName);
 
-Â Â Â Â Â Â Â Â // 1. Insert a document
-Â Â Â Â Â Â Â Â const insertResult = await collection.insertOne({
-Â Â Â Â Â Â Â Â Â Â Â Â _id: '12',
-Â Â Â Â Â Â Â Â Â Â Â Â name: "Devi",
-Â Â Â Â Â Â Â Â Â Â Â Â age: 22,
-Â Â Â Â Â Â Â Â Â Â Â Â place: "Chennai"
-Â Â Â Â Â Â Â Â });
-Â Â Â Â Â Â Â Â console.log("Inserted document ID:",Â  insertResult.insertedId);
+ // 1. Insert a document
+ const insertResult = await collection.insertOne({
+ _id: '12',
+ name: "Devi",
+ age: 22,
+place: "Chennai"
+ });
+ console.log("Inserted document ID:",Â  insertResult.insertedId);
 
-Â Â Â Â Â Â Â Â // 2. Find documents
-Â Â Â Â Â Â Â Â const students = await collection.find({}).toArray();
-Â Â Â Â Â Â Â Â console.log("Found documents:", students);
+ // 2. Find documents
+ const students = await     collection.find({}).toArray();
+ console.log("Found documents:", students);
 
-Â Â Â Â Â Â Â Â // 3. Update a document
-Â Â Â Â Â Â Â Â const UpdateResult = await collection.updateOne(
-Â Â Â Â Â Â Â Â Â Â Â Â { name: "Devi" },
-Â Â Â Â Â Â Â Â Â Â Â Â { $set: { place: "Cbe" } }
-Â Â Â Â Â Â Â Â );
-Â Â Â Â Â Â Â Â console.log("Updated document count:", UpdateResult.modifiedCount);
+ // 3. Update a document
+ const UpdateResult = await collection.updateOne(
+ { name: "Devi" },
+ { $set: { place: "Cbe" } }
+ );
+ console.log("Updated document count:", UpdateResult.modifiedCount);
 
-Â Â Â Â Â Â Â Â 
+
 
 
 
 // 4. Delete a document
-Â Â Â Â Â Â Â Â const deleteResult = await collection.deleteOne({ name: "Jana" });
-Â Â Â Â Â Â Â Â console.log("Deleted document count:", deleteResult.deleteCount);
+ const deleteResult = await collection.deleteOne({ name: "Jana" }); console.log("Deleted document count:", deleteResult.deleteCount);
 
-Â Â Â Â } catch (err) {
-Â Â Â Â Â Â Â Â console.error("An error occurred", err);
-Â Â Â Â } finally {
-Â Â Â Â Â Â Â Â // Close the connection
-Â Â Â Â Â Â Â Â await client.close();
-Â Â Â Â Â Â Â Â console.log("Connection to MongoDB closed");
-Â Â Â Â }
+} catch (err) {
+  console.error("An error occurred", err);
+ } finally {
+ // Close the connection
+ await client.close();
+ console.log("Connection to MongoDB closed");
+Â }
 }
 
 run();
