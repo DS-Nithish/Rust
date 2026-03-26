@@ -184,8 +184,7 @@ place: "Chennai"
  } finally {
  // Close the connection
  await client.close();
- console.log("Connection to MongoDB closed");
-Â }
+ console.log("Connection to MongoDB closed"); }
 }
 
 run();
