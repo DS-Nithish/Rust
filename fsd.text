@@ -1,0 +1,515 @@
+//1.LoginForm
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Form</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background-image: url(back_pic.jpg);
+    background-size: cover;
+}
+
+.container{
+    top:50%;
+    left:50%;
+    position:absolute;
+    transform:translate(-50%,-50%);
+}
+
+.card{
+    padding: 60px 40px 50px 40px;
+    background: black;
+    border-radius: 10px;
+}
+
+input[type="text"], input[type="password"]{
+    width: 200px;
+    border:none;
+    background: transparent;
+    border-bottom: 1px solid white;
+    padding: 5px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#button{
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: dodgerblue;
+    color: white;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    margin-left: 50px;
+}
+
+#button:hover{
+    background-color: aquamarine;
+    color: darkblue;
+}
+
+a{
+    font-size: 12px;
+    color: aliceblue;
+}
+</style>
+
+<script>
+function validateLogin() {
+
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "1234") {
+        alert("Login Successful!");
+        window.location.href = "welcome.html";
+    } 
+    else {
+        alert("Invalid Username or Password");
+    }
+
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <input type="text" placeholder="Username" id="username"><br>
+        <input type="password" placeholder="password" id="password"><br>
+        <a href="#">Forgot Password</a><br>
+        <input type="submit" value="Submit" id="button" onclick="validateLogin()"><br>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+//
+
+//3.Nodejs
+
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) ={
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, World!\n');
+});
+
+server.listen(port, hostname, () ={
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+//
+
+
+//4.MONGoDB SHELL
+
+db.msc.insertOne({ _id: "01", name: "Abi", age: 22, course: "CS", place: "cbe" })
+db.msc.insertMany ( [ {_id: '02', name: 'Bharath', age: 22, place: 'Bhavani'}, {_id: '03',
+name: 'Clara', age: 23, place: 'Chennai'},
+{_id: '04', name: 'David', age: 22, place: 'Delhi'}, {_id: '05', name: 'Ezhil', age: 24, place:
+'Erode'} ])
+db.msc.find({age:22})
+db.msc.find({age:{$eq:22}})
+db.msc.find({age:{$gt:22}})
+db.msc.find({age:{$lt:24}})
+db.msc.find({age {$ne:22}})
+db.msc.update({name: "Abi"}, { $set: {place: "Theni" }})
+db.msc.updateMany({age: 23}, { $set: {age: 22}})
+db.msc.find()
+db.msc.countDocuments()
+db.msc.find().sort({name:1})
+db.msc.deleteOne({name: "Ajay" })
+db.msc.deleteMany({age: 23 }
+
+//
+
+//5.MONGODB USING Nodejs
+
+const { MongoClient } = require('mongodb');
+const uri = "mongodb://localhost:27017";
+const client = new MongoClient(uri);
+const dbName = 'test';
+const collectionName = 'msc';
+
+async function run() {
+Â Â Â Â try {
+Â Â Â Â Â Â Â Â await client.connect();
+Â Â Â Â Â Â Â Â console.log("Connected to MongoDB");
+Â Â Â Â Â Â Â Â const db = client.db(dbName);
+Â Â Â Â Â Â Â Â const collection = db.collection(collectionName);
+
+Â Â Â Â Â Â Â Â // 1. Insert a document
+Â Â Â Â Â Â Â Â const insertResult = await collection.insertOne({
+Â Â Â Â Â Â Â Â Â Â Â Â _id: '12',
+Â Â Â Â Â Â Â Â Â Â Â Â name: "Devi",
+Â Â Â Â Â Â Â Â Â Â Â Â age: 22,
+Â Â Â Â Â Â Â Â Â Â Â Â place: "Chennai"
+Â Â Â Â Â Â Â Â });
+Â Â Â Â Â Â Â Â console.log("Inserted document ID:",Â  insertResult.insertedId);
+
+Â Â Â Â Â Â Â Â // 2. Find documents
+Â Â Â Â Â Â Â Â const students = await collection.find({}).toArray();
+Â Â Â Â Â Â Â Â console.log("Found documents:", students);
+
+Â Â Â Â Â Â Â Â // 3. Update a document
+Â Â Â Â Â Â Â Â const UpdateResult = await collection.updateOne(
+Â Â Â Â Â Â Â Â Â Â Â Â { name: "Devi" },
+Â Â Â Â Â Â Â Â Â Â Â Â { $set: { place: "Cbe" } }
+Â Â Â Â Â Â Â Â );
+Â Â Â Â Â Â Â Â console.log("Updated document count:", UpdateResult.modifiedCount);
+
+Â Â Â Â Â Â Â Â 
+
+
+
+// 4. Delete a document
+Â Â Â Â Â Â Â Â const deleteResult = await collection.deleteOne({ name: "Jana" });
+Â Â Â Â Â Â Â Â console.log("Deleted document count:", deleteResult.deleteCount);
+
+Â Â Â Â } catch (err) {
+Â Â Â Â Â Â Â Â console.error("An error occurred", err);
+Â Â Â Â } finally {
+Â Â Â Â Â Â Â Â // Close the connection
+Â Â Â Â Â Â Â Â await client.close();
+Â Â Â Â Â Â Â Â console.log("Connection to MongoDB closed");
+Â Â Â Â }
+}
+
+run();
+
+//
+
+//6.REACT COUNTER
+
+//App.js
+
+import React, { useState } from "react";
+import "./App.css"; // Import CSS
+
+function CounterApp() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
+  const [showCounter, setShowCounter] = useState(true);
+
+  return (
+    <div className="container">
+      {!showCounter ? (
+        <div>
+          <h1>Enter Your Name</h1>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+          />
+          <br />
+          <button onClick={() => setShowCounter(true)} disabled={!name}>
+            Go to Counter
+          </button>
+        </div>
+      ) : (
+        <div>
+          <h2>Hello, {name}! You can use the counter</h2>
+
+          <div className="counter">{count}</div>
+
+          <button onClick={() => setCount(count + 1)}>Increment</button>
+          <button onClick={() => setCount(count - 1)}>Decrement</button>
+
+          <br />
+          <button onClick={() => setShowCounter(false)}>Back</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default CounterApp;
+
+
+//App.css
+
+  
+  .container {
+    text-align: center;
+    margin-top: 100px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    color: #2c3e50;
+ }
+ 
+ h2 {
+   color: #34495e;
+ }
+ 
+ input {
+   padding: 10px;
+   width: 250px;
+   font-size: 16px;
+   border: 2px solid #ccc;
+   border-radius: 8px;
+   outline: none;
+ }
+ 
+ input:focus {
+   border-color: #3498db;
+ }
+ 
+ 
+ button {
+   padding: 10px 15px;
+   margin: 10px;
+   font-size: 16px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   background-color: #3498db;
+   color: white;
+   transition: 0.3s;
+ }
+ 
+ button:hover {
+   background-color: #2980b9;
+ }
+ 
+ .counter {
+   font-size: 40px;
+   font-weight: bold;
+   color: #e74c3c;
+ }
+
+
+ //7.REACTSTATECOMPONENTGREETING
+
+ //App.js
+
+ import React, { useState } from "react";
+import "./App.css";
+import { Greeting, Welcome, Bye } from "./Greeting";
+
+function App() {
+  const [name, setName] = useState("");
+
+  return (
+    <div className="container">
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <Greeting name={name} />
+      <Welcome />
+      <Bye name={name} />
+    </div>
+  );
+}
+
+export default App;
+
+//Greeting.js
+
+import React from "react";
+
+function Greeting(props) {
+    return <h1>Hello, {props.name}!</h1>;
+}
+
+function Welcome() {
+    return <h1>You are Welcome!!!!!</h1>;
+}
+
+function Bye(props) {
+    return <h1>See you, {props.name}!</h1>;
+}
+export { Greeting, Welcome, Bye };
+
+//App.css
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+h2 {
+  color: #34495e;
+}
+
+input {
+  padding: 10px;
+  width: 250px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #3498db;
+}
+
+
+button {
+  padding: 10px 15px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+//8.Router
+
+//App.js
+
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
+
+// Home Page Component
+const Home = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h2>Home Page</h2>
+      <button onClick={() => navigate("/contact")}>Go to Contact</button>
+    </div>
+  );
+};
+
+// About Page Component
+const About = () => (
+  <div>
+    <h2>About Page</h2>
+    <nav>
+      <ul>
+        <li>
+          <Link to="team">Our Team</Link>
+        </li>
+        <li>
+          <Link to="company">Our Company</Link>
+        </li>
+      </ul>
+    </nav>
+    <Outlet />
+  </div>
+);
+
+// Components for other pages
+const Contact = () => <h2>Contact Page</h2>;
+const Team = () => <h2>Team Page</h2>;
+const Company = () => <h2>Company Page</h2>;
+
+function App() {
+  return (
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Implementing Routes for respective Path */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />}>
+          <Route path="team" element={<Team />} />
+          <Route path="company" element={<Company />} />
+        </Route>
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+//App.css
+
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
